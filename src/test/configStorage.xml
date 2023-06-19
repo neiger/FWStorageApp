@@ -30,7 +30,8 @@
 
             <class name="tests.StorageSampleLoginScreenTests">
                 <methods>
-                    <include name="DemoTestCase" />
+                    <include name="demoTestCase" />
+                    <include name="verifyThatUserIsReturnedToSampleAppInLoggedInState" />
                 </methods>
             </class>
 
