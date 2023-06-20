@@ -1,6 +1,7 @@
 package screens;
 
 import general.BaseScreen;
+import general.ErrorsManager;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -32,6 +33,15 @@ public class StorageSampleLoginScreen extends BaseScreen {
     @AndroidFindBy(id="com.omh.android.storage.sample:id/btn_login")
     private WebElement loginBtn;
 
+    // Messages UI
+
+    @AndroidFindBy(id="com.omh.android.storage.sample:id/alertTitle")
+    private WebElement alertTitle;
+
+    @AndroidFindBy(id="android:id/message")
+    private WebElement alertMsg;
+
+
 
     /*
     METHODS
@@ -48,6 +58,22 @@ public class StorageSampleLoginScreen extends BaseScreen {
         return flag;
     }
 
+    private boolean printAlertMsgs() {
+        boolean flag = false;
+        try {
+            String text = getTextFromMobElement(alertTitle) + "\n" + getTextFromMobElement(alertMsg);
+            System.out.println(" \n==================\n" + text + " \n==================\n");
+            flag = true;
+        } catch (Exception e) {
+            ErrorsManager.errNExpManager(e);}
+        return flag;
+    }
+
+    public boolean checkAlerMsgPrint() {
+        return printAlertMsgs();
+    }
+
+
     /*
    RETURN-REDIRECT PAGE CALLS
     */
@@ -58,7 +84,7 @@ public class StorageSampleLoginScreen extends BaseScreen {
     }
 
 
-        /*
+    /*
     AFTER SIGNED IN VALIDATIONS
      */
 

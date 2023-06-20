@@ -31,6 +31,7 @@
             <class name="tests.StorageSampleLoginScreenTests">
                 <methods>
                     <include name="demoTestCase" />
+                    <include name="verifyThatUserCanTapXInBrowserOrTapOusideModal" />
                     <include name="verifyThatUserIsReturnedToSampleAppInLoggedInState" />
                 </methods>
             </class>
