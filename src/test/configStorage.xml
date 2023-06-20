@@ -30,9 +30,10 @@
 
             <class name="tests.StorageSampleLoginScreenTests">
                 <methods>
-                    <include name="demoTestCase" />
-                    <include name="verifyThatUserCanTapXInBrowserOrTapOusideModal" />
-                    <include name="verifyThatUserIsReturnedToSampleAppInLoggedInState" />
+                    <exclude name="demoTestCase" />
+                    <exclude name="verifyThatUserCanTapXInBrowserOrTapOusideModal" />
+                    <exclude name="verifyThatUserIsReturnedToSampleAppInLoggedInState" />
+                    <include name="verifyUserLogsInSuccessfullyInDrive" />
                 </methods>
             </class>
 

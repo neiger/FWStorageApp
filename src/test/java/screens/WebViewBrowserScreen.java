@@ -37,6 +37,9 @@ public class WebViewBrowserScreen extends BaseScreen {
     @AndroidFindBy(xpath="//android.view.View[@content-desc=\"Neiger PK Drake neiger.drake@gmail.com\"]")
     private WebElement loggedAccount;
 
+    // custom tab browser test
+    @AndroidFindBy(id="com.huawei.browser:id/custom_tab_menu")
+    private WebElement customBrowsertab;
 
     /*
     METHODS
@@ -71,7 +74,7 @@ public class WebViewBrowserScreen extends BaseScreen {
      */
 
     public StorageSampleLoginScreen returnAsSignInState(int getX, int getY) {
-        if(clickLoggedInAccountXY(getX, getY)) {
+        if(customUsersSwipeYLoc(customBrowsertab, 1700, 900) && clickLoggedInAccountXY(getX, getY)) {
             return new StorageSampleLoginScreen(driver);
         } else {return null;}
     }

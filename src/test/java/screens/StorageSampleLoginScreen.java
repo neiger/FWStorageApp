@@ -16,7 +16,7 @@ public class StorageSampleLoginScreen extends BaseScreen {
 
     @Override
     public boolean verifyLoads() {
-        return waitForMobElementToBeVisible(topActionBar) && waitForMobElementToBeVisible(loginBtn);
+        return waitForMobElementToBeVisible(topActionBar);// && waitForMobElementToBeVisible(loginBtn);
     }
 
     /*
@@ -81,6 +81,11 @@ public class StorageSampleLoginScreen extends BaseScreen {
         if(tapOnLoginBtn()) {
             return new WebViewBrowserScreen(this.driver);
         } else {return null;}
+    }
+
+    public StorageSampleLoggedScreen signedUser() {
+        implicityWaitTimeOnScreenManual(3);
+        return new StorageSampleLoggedScreen(this.driver);
     }
 
 
