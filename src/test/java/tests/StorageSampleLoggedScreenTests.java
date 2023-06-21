@@ -21,7 +21,7 @@ public class StorageSampleLoggedScreenTests extends MobileDriverManager {
     }
 
     @Test
-    public void verifyUserLogsInSuccessfullyInDrive() {
+    public void verifyUserCanChangeGridOrLinearLayoutViewInDrive() {
         assertTrue(storageSampleLoggedScreen.listFilesInDrive(), basicErrorMsg("The list of files has failed to be tapped"));
         assertAll();
     }
