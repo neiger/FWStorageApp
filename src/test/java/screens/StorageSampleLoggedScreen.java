@@ -1,7 +1,9 @@
 package screens;
 
 import general.BaseScreen;
+import general.ErrorsManager;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
@@ -35,6 +37,8 @@ public class StorageSampleLoggedScreen extends BaseScreen {
     @AndroidFindBy(id="com.omh.android.storage.sample:id/createFileButton")
     private WebElement createBtn;
 
+
+
     /*
     Methods
      */
@@ -43,4 +47,17 @@ public class StorageSampleLoggedScreen extends BaseScreen {
         return tapMobElement(gridOrLinearLayout) && implicityWaitTimeOnScreenManual(2);
     }
 
+    public boolean navigateBackAndForthInsideAFolder(int getX, int getY) {
+        return tapOnScreenXY(getX, getY) && implicityWaitTimeOnScreenManual(2)
+                && returnToMainDriveScreen() && implicityWaitTimeOnScreenManual(2);
+    }
+
+    private boolean returnToMainDriveScreen() {
+        boolean flag = false;
+        try {
+            pressAndroidKey(AndroidKey.BACK);
+            flag = true;
+        } catch (Exception e) { ErrorsManager.errNExpManager(e);}
+        return flag;
+    }
 }

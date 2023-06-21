@@ -12,7 +12,6 @@ public class StorageSampleLoginScreenTests extends MobileDriverManager {
 
     private StorageSampleLoginScreen storageSampleLoginScreen;
     private WebViewBrowserScreen webViewBrowserScreen;
-    private StorageSampleLoggedScreen storageSampleLoggedScreen;
 
     @BeforeMethod
     public void setAuthSampleLoginScreen() {
@@ -57,11 +56,5 @@ public class StorageSampleLoginScreenTests extends MobileDriverManager {
         assertAll();
     }
 
-    @Test
-    public void verifyUserLogsInSuccessfullyInDrive() {
-        storageSampleLoggedScreen = storageSampleLoginScreen.signedUser();
-        assertTrue(storageSampleLoggedScreen.verifyLoads(), basicErrorMsg("The logged in user was not loaded"));
-        assertTrue(storageSampleLoggedScreen.listFilesInDrive(), basicErrorMsg("The list of files has failed to be tapped"));
-        assertAll();
-    }
+
 }
