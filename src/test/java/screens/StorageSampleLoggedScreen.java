@@ -9,6 +9,8 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class StorageSampleLoggedScreen extends BaseScreen {
     public StorageSampleLoggedScreen(AndroidDriver driver) {
         super(driver);
@@ -17,7 +19,7 @@ public class StorageSampleLoggedScreen extends BaseScreen {
 
     @Override
     public boolean verifyLoads() {
-        return waitForMobElementToBeVisible(lblTitle) && waitForMobElementToBeVisible(sortLbl)
+        return waitForMobElementToBeVisible(androidTextViewList.get(0)) && waitForMobElementToBeVisible(sortLbl)
                 && waitForMobElementToBeVisible(gridOrLinearLayout) && waitForMobElementToBeVisible(createBtn);
     }
 
@@ -26,7 +28,7 @@ public class StorageSampleLoggedScreen extends BaseScreen {
      */
 
     @AndroidFindBy(className="android.widget.TextView")
-    private WebElement lblTitle;
+    private List<WebElement> androidTextViewList;
 
     @AndroidFindBy(id="com.omh.android.storage.sample:id/sortByName")
     private WebElement sortLbl;
@@ -37,7 +39,8 @@ public class StorageSampleLoggedScreen extends BaseScreen {
     @AndroidFindBy(id="com.omh.android.storage.sample:id/createFileButton")
     private WebElement createBtn;
 
-
+    @AndroidFindBy(className="android.view.ViewGroup")
+    private List<WebElement> androidViewGroupList;
 
     /*
     Methods
@@ -48,7 +51,7 @@ public class StorageSampleLoggedScreen extends BaseScreen {
     }
 
     public boolean navigateBackAndForthInsideAFolder(int getX, int getY) {
-        return tapOnScreenXY(getX, getY) && implicityWaitTimeOnScreenManual(2)
+        return tapOnScreenXY(getX, getY) && implicityWaitTimeOnScreenManual(2) && getFolderText()
                 && returnToMainDriveScreen() && implicityWaitTimeOnScreenManual(2);
     }
 
@@ -58,6 +61,15 @@ public class StorageSampleLoggedScreen extends BaseScreen {
             pressAndroidKey(AndroidKey.BACK);
             flag = true;
         } catch (Exception e) { ErrorsManager.errNExpManager(e);}
+        return flag;
+    }
+
+    private boolean getFolderText() {
+        boolean flag = false;
+        try {
+            System.out.println(getTextFromMobElement(androidTextViewList.get(1)));
+            flag = true;
+        } catch (Exception e) {ErrorsManager.errNExpManager(e);}
         return flag;
     }
 }
