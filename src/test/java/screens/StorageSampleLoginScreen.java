@@ -41,7 +41,9 @@ public class StorageSampleLoginScreen extends BaseScreen {
     @AndroidFindBy(id="android:id/message")
     private WebElement alertMsg;
 
-
+    // account picker popup
+    @AndroidFindBy(id="com.google.android.gms:id/container")
+    private WebElement pickAccount;
 
     /*
     METHODS
@@ -71,6 +73,19 @@ public class StorageSampleLoginScreen extends BaseScreen {
 
     public boolean checkAlerMsgPrint() {
         return printAlertMsgs();
+    }
+
+    public boolean tapOutsideModal() {
+        return tapOnLoginBtn() && implicityWaitTimeOnScreenManual(1) && tapOnScreenXY(880, 2265)
+                && printAlertMsgs() && tapOnScreenXY(880, 2265);
+    }
+
+    public boolean verifySignInPopUpShown() {
+        boolean flag = false;
+        if(tapOnLoginBtn()) {
+            flag = waitForMobElementToBeVisible(pickAccount) && tapMobElement(pickAccount) && implicityWaitTimeOnScreenManual(3);
+        }
+        return flag;
     }
 
 

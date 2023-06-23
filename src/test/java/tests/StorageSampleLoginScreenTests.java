@@ -29,8 +29,8 @@ public class StorageSampleLoginScreenTests extends MobileDriverManager {
     @Test @Parameters({"deviceType"})
     public void verifyThatUserCanTapXInBrowserOrTapOusideModal(String deviceType) {
         if(deviceType.equals("GMS")) {
-            //assertTrue(storageSampleLoginScreen.tapOutsideModal(), basicErrorMsg("It can't be tapped outside"));
-            System.err.println("This has not been implemented yet!");
+            assertTrue(storageSampleLoginScreen.tapOutsideModal(), basicErrorMsg("It can't be tapped outside"));
+            //System.err.println("This has not been implemented yet!");
         } else {
             webViewBrowserScreen = storageSampleLoginScreen.signInFromBrowser();
             assertTrue(webViewBrowserScreen.verifySignPageLoads(), basicErrorMsg("The signin web view was not loaded correctly"));
@@ -49,8 +49,8 @@ public class StorageSampleLoginScreenTests extends MobileDriverManager {
             assertTrue(webViewBrowserScreen.clickLoggedInAccountXY(540,700), basicErrorMsg("Unable to click on the XY location given"));
             storageSampleLoginScreen = webViewBrowserScreen.returnAsSignInState(800,1920);
         } else {
-            //assertTrue(storageSampleLoginScreen.verifySignInPopUpShown(), basicErrorMsg("Unable to shown the pop up account"));
-            System.err.println("This has not been implemented yet!");
+            assertTrue(storageSampleLoginScreen.verifySignInPopUpShown(), basicErrorMsg("Unable to shown the pop up account"));
+            //System.err.println("This has not been implemented yet!");
         }
         //assertTrue(storageSampleLoginScreen.verifySignInState(), basicErrorMsg("The signed in state fails the validation"));
         assertAll();
