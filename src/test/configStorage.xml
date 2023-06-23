@@ -30,17 +30,17 @@
             <!-- This class validates unsign in state and the correct signin process -->
             <class name="tests.StorageSampleLoginScreenTests">
                 <methods>
-                    <include name="demoTestCase" />
-                    <include name="verifyThatUserCanTapXInBrowserOrTapOusideModal" />
-                    <include name="verifyThatUserIsReturnedToSampleAppInLoggedInState" />
+                    <include name="FW_17_FW_18_verifyThatStorageLoginBtnIsDisplayed" />
+                    <include name="FW_98_FW_114_FW_115_verifyThatUserCanTapXInBrowserOrTapOusideModal" />
+                    <include name="FW_23_FW_97_verifyThatUserIsReturnedToSampleAppInLoggedInState" />
                 </methods>
             </class>
 
             <!-- This class requires to be signed in first in the Google Account -->
             <class name="tests.StorageSampleLoggedScreenTests">
                 <methods>
-                    <exclude name="verifyUserCanChangeGridOrLinearLayoutViewInDrive" />
-                    <exclude name="verifyUserCanNavigateBetweenFolders" />
+                    <exclude name="FW_102_FW_103_verifyUserCanChangeGridOrLinearLayoutViewInDrive" />
+                    <exclude name="FW_43_FW_116_verifyUserCanNavigateBetweenFolders" />
 
                     <!-- UPCOMING SCRIPTS TO BE AUTOMATED
                     <exclude name="verifyUserCanAddAFolder" />
