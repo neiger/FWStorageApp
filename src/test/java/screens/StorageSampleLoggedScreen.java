@@ -20,7 +20,7 @@ public class StorageSampleLoggedScreen extends BaseScreen {
     @Override
     public boolean verifyLoads() {
         return waitForMobElementToBeVisible(androidTextViewList.get(0)) && waitForMobElementToBeVisible(sortLbl)
-                && waitForMobElementToBeVisible(moreOptionsBtn);// && waitForMobElementToBeVisible(createBtn);
+                && waitForMobElementToBeVisible(moreOptionsBtn);
     }
 
     /*
@@ -86,4 +86,18 @@ public class StorageSampleLoggedScreen extends BaseScreen {
         } catch (Exception e) {ErrorsManager.errNExpManager(e);}
         return flag;
     }
+
+    /*
+    AFTER LOGGED IN VALIDATIONS
+     */
+
+    public boolean verifySignInState() {
+        System.out.println("The app is returned in Signed In state");
+        return waitForMobElementToBeVisible(sortLbl) && waitForMobElementToBeVisible(moreOptionsBtn);
+                /*implicityWaitTimeOnScreenManual(3); &&
+                waitForMobElementToBeVisible(loggedOutBtn) && waitForMobElementToBeVisible(refreshBtn) &&
+                waitForMobElementToBeVisible(tvName) && waitForMobElementToBeVisible(tvEmail) &&
+                waitForMobElementToBeVisible(tokenInfo);*/
+    }
+
 }
