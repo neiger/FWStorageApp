@@ -21,7 +21,7 @@ public class StorageSampleLoginScreenTests extends MobileDriverManager {
     }
 
     @Test
-    public void demoTestCase() {
+    public void verifyThatStorageLoginBtnIsDisplayed() {
         assertTrue(storageSampleLoginScreen.verifySignInBtnDisplayed(), basicErrorMsg("Unable to get the button info"));
         assertAll();
     }
