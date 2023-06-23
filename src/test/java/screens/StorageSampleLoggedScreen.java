@@ -20,7 +20,7 @@ public class StorageSampleLoggedScreen extends BaseScreen {
     @Override
     public boolean verifyLoads() {
         return waitForMobElementToBeVisible(androidTextViewList.get(0)) && waitForMobElementToBeVisible(sortLbl)
-                && waitForMobElementToBeVisible(gridOrLinearLayout) && waitForMobElementToBeVisible(createBtn);
+                && waitForMobElementToBeVisible(moreOptionsBtn);// && waitForMobElementToBeVisible(createBtn);
     }
 
     /*
@@ -33,8 +33,18 @@ public class StorageSampleLoggedScreen extends BaseScreen {
     @AndroidFindBy(id="com.omh.android.storage.sample:id/sortByName")
     private WebElement sortLbl;
 
+    // Ellipsis more button
+    @AndroidFindBy(xpath="//android.widget.ImageView[@content-desc=\"More options\"]")
+    private WebElement moreOptionsBtn;
+
+    // Ellipsis options
+    @AndroidFindBy(className="android.widget.LinearLayout")
+    private List<WebElement> listViewOptions;
+
+    /*
     @AndroidFindBy(id="com.omh.android.storage.sample:id/swapGridOrLinearLayoutManager")
     private WebElement gridOrLinearLayout;
+
 
     @AndroidFindBy(id="com.omh.android.storage.sample:id/createFileButton")
     private WebElement createBtn;
@@ -42,12 +52,16 @@ public class StorageSampleLoggedScreen extends BaseScreen {
     @AndroidFindBy(className="android.view.ViewGroup")
     private List<WebElement> androidViewGroupList;
 
+    */
+
+
     /*
     Methods
      */
 
     public boolean listFilesInDrive() {
-        return tapMobElement(gridOrLinearLayout) && implicityWaitTimeOnScreenManual(2);
+        return tapMobElement(moreOptionsBtn) && implicityWaitTimeOnScreenManual(2)
+                && tapMobElement(listViewOptions.get(0)) && implicityWaitTimeOnScreenManual(2);
     }
 
     public boolean navigateBackAndForthInsideAFolder(int getX, int getY) {
