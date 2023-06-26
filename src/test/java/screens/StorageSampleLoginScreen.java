@@ -108,12 +108,5 @@ public class StorageSampleLoginScreen extends BaseScreen {
     AFTER SIGNED IN VALIDATIONS
      */
 
-    public boolean verifySignInState() {
-        System.out.println("The app is returned in Signed In state");
-        return implicityWaitTimeOnScreenManual(3);/* &&
-                waitForMobElementToBeVisible(loggedOutBtn) && waitForMobElementToBeVisible(refreshBtn) &&
-                waitForMobElementToBeVisible(tvName) && waitForMobElementToBeVisible(tvEmail) &&
-                waitForMobElementToBeVisible(tokenInfo);*/
-    }
 
 }
