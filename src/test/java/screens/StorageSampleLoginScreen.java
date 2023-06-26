@@ -16,7 +16,7 @@ public class StorageSampleLoginScreen extends BaseScreen {
 
     @Override
     public boolean verifyLoads() {
-        return waitForMobElementToBeVisible(topActionBar);// && waitForMobElementToBeVisible(loginBtn);
+        return waitForMobElementToBeVisible(topActionBar);
     }
 
     /*
@@ -55,7 +55,7 @@ public class StorageSampleLoginScreen extends BaseScreen {
     }
 
     private boolean tapOnLoginBtn() {
-        boolean flag = false;
+        boolean flag;
         flag = tapMobElement(loginBtn) && implicityWaitTimeOnScreenManual(1);
         return flag;
     }

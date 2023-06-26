@@ -6,7 +6,6 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
@@ -40,7 +39,7 @@ public class StorageSampleLoggedScreen extends BaseScreen {
     private WebElement moreOptionsBtn;
 
     // Ellipsis options
-    @AndroidFindBy(className="android.widget.ListView")
+    @AndroidFindBy(className="android.widget.LinearLayout")
     private List<WebElement> listViewOptions;
 
     /*
