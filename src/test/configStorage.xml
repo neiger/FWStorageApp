@@ -36,7 +36,7 @@
                 </methods>
             </class>
 
-            <!-- This class requires to be signed in first in the Google Account -->
+            <!-- This class requires to be signed in first with a Google Account -->
             <class name="tests.StorageSampleLoggedScreenTests">
                 <methods>
                     <exclude name="FW_102_FW_103_verifyUserCanChangeGridOrLinearLayoutViewInDrive" />
