@@ -41,15 +41,8 @@
                 <methods>
                     <exclude name="FW_102_FW_103_verifyUserCanChangeGridOrLinearLayoutViewInDrive" />
                     <exclude name="FW_43_FW_116_verifyUserCanNavigateBetweenFolders" />
-                    <include name="createAFolder" />
-                    <include name="createAFile" />
-
-                    <!-- UPCOMING SCRIPTS TO BE AUTOMATED
-                    <exclude name="verifyUserCanAddAFolder" />
-                    <exclude name="verifyUserCanAddAFile" />
-                    <exclude name="verifyUserCanDeleteAFolder" />
-                    <exclude name="verifyUserCanDeleteAFile" />
-                    -->
+                    <exclude name="FW_47_FW_49_FW_117_verifyUserCanSeeAddDeleteFolders" />
+                    <include name="FW_19_FW_20_FW_22_verifyUserCanSeeAddDeleteFiles" />
                 </methods>
             </class>
         </classes>

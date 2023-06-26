@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
+import java.util.Random;
 
 public class StorageSampleLoggedScreen extends BaseScreen {
     public StorageSampleLoggedScreen(AndroidDriver driver) {
@@ -107,44 +108,76 @@ public class StorageSampleLoggedScreen extends BaseScreen {
         return waitForMobElementToBeVisible(sortLbl) && waitForMobElementToBeVisible(moreOptionsBtn);
     }
 
-    public boolean tapAndCreateAFolder() {
-        try{
-            tapMobElement(moreOptionsBtn);
-            implicityWaitTimeOnScreenManual(1);
-            tapOnScreenXY(675, 365);
-            implicityWaitTimeOnScreenManual(1);
+    /*
+    CREATION FILE OR FOLDERS METHODS
+     */
 
+    private static final int SCREEN_X_COORDINATE = 675;
+    private static final int SCREEN_Y_COORDINATE = 365;
+    private static final int WAIT_TIME_SHORT = 1;
+    private static final int WAIT_TIME_MEDIUM = 3;
+    private static final int WAIT_TIME_LONG = 5;
+
+    public boolean tapAndCreateFolderOrFile(boolean createFolder) {
+        try {
+            tapMoreOptionsButton();
+            waitOnScreen(WAIT_TIME_SHORT);
+            tapOnScreenXY(SCREEN_X_COORDINATE, SCREEN_Y_COORDINATE);
+            waitOnScreen(WAIT_TIME_SHORT);
             writeASimpleNameOnField();
-            tapMobElement(createBtn);
-            implicityWaitTimeOnScreenManual(3);
+
+            if (!createFolder) {
+                tapMobElement(fileTypeDownArrow);
+                int randomIndex = generateRandomIndex(1, 3);
+                tapMobElement(fileTypeCheckedTextView.get(randomIndex));
+            }
+
+            tapCreateButton();
+
+            if (createFolder) {
+                waitOnScreen(WAIT_TIME_MEDIUM);
+            } else {
+                waitOnScreen(WAIT_TIME_LONG);
+            }
+
             return true;
         } catch (Exception e) {
             return false;
         }
     }
 
+    private int generateRandomIndex(int min, int max) {
+        Random random = new Random();
+        return random.nextInt(max - min + 1) + min;
+    }
+
+    private void tapMoreOptionsButton() {
+        tapMobElement(moreOptionsBtn);
+    }
+
     private void writeASimpleNameOnField() {
-        sendTextOnEmptyMobElement(fileNameTxtField, "Automated File-Folder Created");
+        String randomName = generateRandomName();
+        fileNameTxtField.sendKeys(randomName);
+        //typeTxtOnMobElement(fileNameTxtField, randomName);
+    }
+
+    private String generateRandomName() {
+        Random random = new Random();
+        int randomNumber = random.nextInt(1000);  // Adjust the range of random numbers as needed
+        return "Auto-File-Folder " + randomNumber;
+    }
+
+
+    private void tapCreateButton() {
+        tapMobElement(createBtn);
+    }
+
+    private void waitOnScreen(int seconds) {
+        implicityWaitTimeOnScreenManual(seconds);
     }
 
     public boolean deleteAFileFolder() {
         return tapOnScreenXY(445,460);
     }
 
-    public boolean tapAndCreateAFile() {
-        try{
-            tapMobElement(moreOptionsBtn);
-            implicityWaitTimeOnScreenManual(1);
-            tapOnScreenXY(675, 365);
-            implicityWaitTimeOnScreenManual(1);
-            writeASimpleNameOnField();
-            tapMobElement(fileTypeDownArrow);
-            tapMobElement(fileTypeCheckedTextView.get(2));
-            tapMobElement(createBtn);
-            implicityWaitTimeOnScreenManual(3);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
 }
