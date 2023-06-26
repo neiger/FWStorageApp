@@ -6,6 +6,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
@@ -38,22 +39,32 @@ public class StorageSampleLoggedScreen extends BaseScreen {
     private WebElement moreOptionsBtn;
 
     // Ellipsis options
-    @AndroidFindBy(className="android.widget.LinearLayout")
+    @AndroidFindBy(className="android.widget.ListView")
     private List<WebElement> listViewOptions;
 
     /*
-    @AndroidFindBy(id="com.omh.android.storage.sample:id/swapGridOrLinearLayoutManager")
-    private WebElement gridOrLinearLayout;
+     POPUP Create
+     */
+    @AndroidFindBy(id="com.omh.android.storage.sample:id/alertTitle")
+    private WebElement alertTitle;
 
+    @AndroidFindBy(id="android:id/button2")
+    private WebElement cancelBtn;
 
-    @AndroidFindBy(id="com.omh.android.storage.sample:id/createFileButton")
+    @AndroidFindBy(id="android:id/button1")
     private WebElement createBtn;
 
-    @AndroidFindBy(className="android.view.ViewGroup")
-    private List<WebElement> androidViewGroupList;
+    /*
+    POPUP fields to complete
+     */
+    @AndroidFindBy(id="com.omh.android.storage.sample:id/fileName")
+    private WebElement fileNameTxtField;
 
-    */
+    @AndroidFindBy(id="com.omh.android.storage.sample:id/fileType")
+    private WebElement fileTypeDownArrow;
 
+    @AndroidFindBy(className="android.widget.CheckedTextView")
+    private List<WebElement> fileTypeCheckedTextView;
 
     /*
     Methods
@@ -94,10 +105,46 @@ public class StorageSampleLoggedScreen extends BaseScreen {
     public boolean verifySignInState() {
         System.out.println("The app is returned in Signed In state");
         return waitForMobElementToBeVisible(sortLbl) && waitForMobElementToBeVisible(moreOptionsBtn);
-                /*implicityWaitTimeOnScreenManual(3); &&
-                waitForMobElementToBeVisible(loggedOutBtn) && waitForMobElementToBeVisible(refreshBtn) &&
-                waitForMobElementToBeVisible(tvName) && waitForMobElementToBeVisible(tvEmail) &&
-                waitForMobElementToBeVisible(tokenInfo);*/
     }
 
+    public boolean tapAndCreateAFolder() {
+        try{
+            tapMobElement(moreOptionsBtn);
+            implicityWaitTimeOnScreenManual(1);
+            tapOnScreenXY(675, 365);
+            implicityWaitTimeOnScreenManual(1);
+
+            writeASimpleNameOnField();
+            tapMobElement(createBtn);
+            implicityWaitTimeOnScreenManual(3);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private void writeASimpleNameOnField() {
+        sendTextOnEmptyMobElement(fileNameTxtField, "Automated File-Folder Created");
+    }
+
+    public boolean deleteAFileFolder() {
+        return tapOnScreenXY(445,460);
+    }
+
+    public boolean tapAndCreateAFile() {
+        try{
+            tapMobElement(moreOptionsBtn);
+            implicityWaitTimeOnScreenManual(1);
+            tapOnScreenXY(675, 365);
+            implicityWaitTimeOnScreenManual(1);
+            writeASimpleNameOnField();
+            tapMobElement(fileTypeDownArrow);
+            tapMobElement(fileTypeCheckedTextView.get(2));
+            tapMobElement(createBtn);
+            implicityWaitTimeOnScreenManual(3);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

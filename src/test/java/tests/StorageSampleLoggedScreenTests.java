@@ -31,4 +31,19 @@ public class StorageSampleLoggedScreenTests extends MobileDriverManager {
         assertTrue(storageSampleLoggedScreen.navigateBackAndForthInsideAFolder(270, 585), basicErrorMsg("Unable to navigate between folders"));
         assertAll();
     }
+
+    @Test
+    public void createAFolder() {
+        assertTrue(storageSampleLoggedScreen.tapAndCreateAFolder(), basicErrorMsg("The folder can't be created"));
+        assertTrue(storageSampleLoggedScreen.deleteAFileFolder(), basicErrorMsg("The folder can't be deleted"));
+        assertAll();
+    }
+
+    @Test
+    public void createAFile() {
+        assertTrue(storageSampleLoggedScreen.tapAndCreateAFile(), basicErrorMsg("The folder can't be created"));
+        assertTrue(storageSampleLoggedScreen.deleteAFileFolder(), basicErrorMsg("The folder can't be deleted"));
+        assertAll();
+    }
+
 }
