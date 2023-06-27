@@ -175,8 +175,54 @@ public class StorageSampleLoggedScreen extends BaseScreen {
         implicityWaitTimeOnScreenManual(seconds);
     }
 
-    public boolean deleteAFileFolder() {
-        return tapOnScreenXY(445,460);
+    public boolean deleteAFileFolder() {return tapOnScreenXY(445,460);}
+
+    @AndroidFindBy(xpath="/hierarchy/android.widget.Toast")
+    private WebElement toastMsgDel;
+
+
+    /*
+    REDIRECTS TO FILE EXPLORER APP TO UPLOAD A FILE
+     */
+
+    public FileUploadExplorerScreen fileUploadExplorerScreen() {
+
+        try {
+            // call a method to tap the more button
+            tapMoreOptionsButton();
+            // locate by XY coordinates to tap Upload
+            waitOnScreen(WAIT_TIME_SHORT);
+            tapOnScreenXY(SCREEN_X_COORDINATE, 510);
+            // wait and return driver with the new view screen
+            implicityWaitTimeOnScreenManual(WAIT_TIME_SHORT);
+            return new FileUploadExplorerScreen(this.driver);
+        } catch (Exception e) {
+            ErrorsManager.errNExpManager(e);
+            return null;
+        }
     }
 
+    // A method that tap on Upload button
+    // Implicity wait until file is uploaded. Toast can't be validated
+    // Exit the app
+
+    public boolean tapToUploadTheFile() {
+        return tapMobElement(createBtn) && validateToast();
+    }
+
+    @AndroidFindBy(xpath="/hierarchy/android.widget.Toast")
+    private WebElement toastMsg;
+
+    private boolean validateToast() {
+        boolean flag = false;
+        try{
+            String toastMessage = toastMsg.getText();
+            System.out.println(toastMessage);
+            implicityWaitTimeOnScreenManual(WAIT_TIME_LONG);
+            flag = true;
+        } catch (Exception e) {ErrorsManager.errNExpManager(e);}
+
+
+        return flag;
+    }
 }
