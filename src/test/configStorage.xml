@@ -46,7 +46,7 @@
                 </methods>
             </class>
 
-            <!-- -->
+            <!-- This class requires to be signin and have file explorer app to upload -->
             <class name="tests.FileUploadExplorerScreenTests">
                 <methods>
                     <include name="uploadAFileTest" />
