@@ -39,12 +39,20 @@
             <!-- This class requires to be signed in first with a Google Account -->
             <class name="tests.StorageSampleLoggedScreenTests">
                 <methods>
-                    <include name="FW_102_FW_103_verifyUserCanChangeGridOrLinearLayoutViewInDrive" />
+                    <exclude name="FW_102_FW_103_verifyUserCanChangeGridOrLinearLayoutViewInDrive" />
                     <exclude name="FW_43_FW_116_verifyUserCanNavigateBetweenFolders" />
                     <exclude name="FW_47_FW_49_FW_117_verifyUserCanSeeAddDeleteFolders" />
                     <exclude name="FW_19_FW_20_FW_22_verifyUserCanSeeAddDeleteFiles" />
                 </methods>
             </class>
+
+            <!-- This class requires to be signin and have file explorer app to upload -->
+            <class name="tests.FileUploadExplorerScreenTests">
+                <methods>
+                    <include name="uploadAFileTest" />
+                </methods>
+            </class>
+
         </classes>
     </test>
 
