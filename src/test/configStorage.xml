@@ -9,7 +9,7 @@
             <parameter name="tmDynamic" value="10"/>
 
             <!--  Mobile Main Config Parameters  -->
-            <parameter name="deviceType" value="GMS"/> <!-- GMS / nonGMS -->
+            <parameter name="deviceType" value="nonGMS"/> <!-- GMS / nonGMS -->
             <parameter name="platformName" value="Android"/>
             <parameter name="platformVersion" value="13,11"/>  <!-- non-GMS Android 11 / GMS Android 12 -->
             <parameter name="deviceName" value="R3CTC0D3BFE,HWQYD22514501984"/> <!-- non-GMS HWQYD22514501984  GMS R3CTC0D3BFE Emulator emulator-5554 -->
@@ -30,19 +30,19 @@
             <!-- This class validates unsign in state and the correct signin process -->
             <class name="tests.StorageSampleLoginScreenTests">
                 <methods>
-                    <exclude name="FW_17_FW_18_verifyThatStorageLoginBtnIsDisplayed" />
-                    <exclude name="FW_98_FW_114_FW_115_verifyThatUserCanTapXInBrowserOrTapOusideModal" />
-                    <exclude name="FW_23_FW_97_verifyThatUserIsReturnedToSampleAppInLoggedInState" />
+                    <include name="FW_17_FW_18_verifyThatStorageLoginBtnIsDisplayed" />
+                    <include name="FW_98_FW_114_FW_115_verifyThatUserCanTapXInBrowserOrTapOusideModal" />
+                    <include name="FW_23_FW_97_verifyThatUserIsReturnedToSampleAppInLoggedInState" />
                 </methods>
             </class>
 
             <!-- This class requires to be signed in first with a Google Account -->
             <class name="tests.StorageSampleLoggedScreenTests">
                 <methods>
-                    <exclude name="FW_102_FW_103_verifyUserCanChangeGridOrLinearLayoutViewInDrive" />
-                    <exclude name="FW_43_FW_116_verifyUserCanNavigateBetweenFolders" />
-                    <exclude name="FW_47_FW_49_FW_117_verifyUserCanSeeAddDeleteFolders" />
-                    <exclude name="FW_19_FW_20_FW_22_verifyUserCanSeeAddDeleteFiles" />
+                    <include name="FW_102_FW_103_verifyUserCanChangeGridOrLinearLayoutViewInDrive" />
+                    <include name="FW_43_FW_116_verifyUserCanNavigateBetweenFolders" />
+                    <include name="FW_47_FW_49_FW_117_verifyUserCanSeeAddDeleteFolders" />
+                    <include name="FW_19_FW_20_FW_22_verifyUserCanSeeAddDeleteFiles" />
                 </methods>
             </class>
 
@@ -50,6 +50,12 @@
             <class name="tests.FileUploadExplorerScreenTests">
                 <methods>
                     <include name="FW_29_verifyThatAFileCanBeUploadedCorrectly" />
+                </methods>
+            </class>
+
+            <class name="tests.LogOutScreenTests">
+                <methods>
+                    <include name="FW_101_verifyThatUserCanlogOutTheSession" />
                 </methods>
             </class>
 
