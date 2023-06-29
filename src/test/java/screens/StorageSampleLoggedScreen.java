@@ -210,19 +210,18 @@ public class StorageSampleLoggedScreen extends BaseScreen {
         return tapMobElement(createBtn) && implicityWaitTimeOnScreenManual(WAIT_TIME_LONG);
     }
 
-    @AndroidFindBy(xpath="/hierarchy/android.widget.Toast")
-    private WebElement toastMsg;
 
-    private boolean validateToast() {
-        boolean flag = false;
-        try{
-            String toastMessage = toastMsg.getText();
-            System.out.println(toastMessage);
-            implicityWaitTimeOnScreenManual(WAIT_TIME_LONG);
-            flag = true;
-        } catch (Exception e) {ErrorsManager.errNExpManager(e);}
+    /*
+    Sign out session
+     */
 
+    private boolean signOutSession() {
+        return tapOnScreenXY(SCREEN_X_COORDINATE, 675) && implicityWaitTimeOnScreenManual(WAIT_TIME_SHORT);
+    }
 
-        return flag;
+    public StorageSampleLoginScreen signOutUserSession() {
+        if(signOutSession()) {
+            return new StorageSampleLoginScreen(driver);
+        } else return null;
     }
 }
