@@ -23,7 +23,7 @@ public class FileUploadExplorerScreenTests extends MobileDriverManager {
     }
 
     @Test
-    public void uploadAFileTest() {
+    public void FW_29_verifyThatAFileCanBeUploadedCorrectly() {
         fileUploadExplorerScreen = storageSampleLoggedScreen.fileUploadExplorerScreen();
         storageSampleLoggedScreen = fileUploadExplorerScreen.storageSampleLoggedScreen();
         assertTrue(storageSampleLoggedScreen.tapToUploadTheFile(), basicErrorMsg("Unable to tap to upload the file"));

@@ -207,7 +207,7 @@ public class StorageSampleLoggedScreen extends BaseScreen {
     // Exit the app
 
     public boolean tapToUploadTheFile() {
-        return tapMobElement(createBtn) && validateToast();
+        return tapMobElement(createBtn) && implicityWaitTimeOnScreenManual(WAIT_TIME_LONG);
     }
 
     @AndroidFindBy(xpath="/hierarchy/android.widget.Toast")
