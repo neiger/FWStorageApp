@@ -26,8 +26,7 @@ public class LogOutScreenTests extends MobileDriverManager {
     public void FW_101_verifyThatUserCanlogOutTheSession() {
         storageSampleLoginScreen = storageSampleLoggedScreen.signOutUserSession();
         System.out.println("The user session has been closed successfully");
-        // This validation will be performed once it is implemented by dev
-        //assertTrue(storageSampleLoggedScreen.verifyLoads(), basicErrorMsg("Unable to load login screen"));
-        //assertAll();
+        assertTrue(storageSampleLoginScreen.verifyLoads(), basicErrorMsg("Unable to load login screen"));
+        assertAll();
     }
 }

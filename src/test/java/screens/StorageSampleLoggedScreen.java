@@ -216,7 +216,9 @@ public class StorageSampleLoggedScreen extends BaseScreen {
      */
 
     private boolean signOutSession() {
-        return tapOnScreenXY(SCREEN_X_COORDINATE, 675) && implicityWaitTimeOnScreenManual(WAIT_TIME_SHORT);
+        tapMoreOptionsButton();
+        return implicityWaitTimeOnScreenManual(WAIT_TIME_SHORT) && tapOnScreenXY(SCREEN_X_COORDINATE, 675)
+                && implicityWaitTimeOnScreenManual(WAIT_TIME_SHORT);
     }
 
     public StorageSampleLoginScreen signOutUserSession() {
