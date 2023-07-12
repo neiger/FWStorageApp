@@ -24,7 +24,7 @@ public class StorageSampleLoginScreen extends BaseScreen {
      */
 
     // logged out elements
-    @AndroidFindBy(id="com.omh.android.storage.sample:id/action_bar")
+    @AndroidFindBy(id="com.omh.android.storage.sample:id/toolbar")
     private WebElement topActionBar;
 
     @AndroidFindBy(className="android.widget.TextView")

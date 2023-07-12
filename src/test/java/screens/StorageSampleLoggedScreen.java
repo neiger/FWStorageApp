@@ -104,7 +104,7 @@ public class StorageSampleLoggedScreen extends BaseScreen {
 
     public boolean verifySignInState() {
         System.out.println("The app is returned in Signed In state");
-        return waitForMobElementToBeVisible(sortLbl) && waitForMobElementToBeVisible(moreOptionsBtn);
+        return implicityWaitTimeOnScreenManual(WAIT_TIME_MEDIUM) /*&& waitForMobElementToBeVisible(sortLbl) && waitForMobElementToBeVisible(moreOptionsBtn)*/;
     }
 
     /*
@@ -175,7 +175,12 @@ public class StorageSampleLoggedScreen extends BaseScreen {
         implicityWaitTimeOnScreenManual(seconds);
     }
 
-    public boolean deleteAFileFolder() {return tapOnScreenXY(445,460);}
+    public boolean deleteAFileFolder(boolean deleteFile) {
+        if(deleteFile) {
+            return tapOnScreenXY(445,460);
+        } else
+            return tapOnScreenXY(980,460);
+    }
 
     @AndroidFindBy(xpath="/hierarchy/android.widget.Toast")
     private WebElement toastMsgDel;

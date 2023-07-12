@@ -27,7 +27,7 @@ public class FileUploadExplorerScreenTests extends MobileDriverManager {
         fileUploadExplorerScreen = storageSampleLoggedScreen.fileUploadExplorerScreen();
         storageSampleLoggedScreen = fileUploadExplorerScreen.storageSampleLoggedScreen();
         assertTrue(storageSampleLoggedScreen.tapToUploadTheFile(), basicErrorMsg("Unable to tap to upload the file"));
-        assertTrue(storageSampleLoggedScreen.deleteAFileFolder(), basicErrorMsg("Unable to delete the file"));
+        assertTrue(storageSampleLoggedScreen.deleteAFileFolder(false), basicErrorMsg("Unable to delete the file"));
         assertAll();
     }
 

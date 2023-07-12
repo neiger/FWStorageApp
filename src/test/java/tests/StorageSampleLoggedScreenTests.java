@@ -35,14 +35,14 @@ public class StorageSampleLoggedScreenTests extends MobileDriverManager {
     @Test
     public void FW_47_FW_49_FW_117_verifyUserCanSeeAddDeleteFolders() {
         assertTrue(storageSampleLoggedScreen.tapAndCreateFolderOrFile(true), basicErrorMsg("The folder can't be created"));
-        assertTrue(storageSampleLoggedScreen.deleteAFileFolder(), basicErrorMsg("The folder can't be deleted"));
+        assertTrue(storageSampleLoggedScreen.deleteAFileFolder(true), basicErrorMsg("The folder can't be deleted"));
         assertAll();
     }
 
     @Test //(invocationCount = 10)
     public void FW_19_FW_20_FW_22_verifyUserCanSeeAddDeleteFiles() {
         assertTrue(storageSampleLoggedScreen.tapAndCreateFolderOrFile(false), basicErrorMsg("The file can't be created"));
-        assertTrue(storageSampleLoggedScreen.deleteAFileFolder(), basicErrorMsg("The file can't be deleted"));
+        assertTrue(storageSampleLoggedScreen.deleteAFileFolder(false), basicErrorMsg("The file can't be deleted"));
         assertAll();
     }
 
